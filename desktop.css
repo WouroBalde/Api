@@ -1,0 +1,24 @@
+:root {
+    --primary: #0055B7;
+    --secondary: #FFFFFF;
+}
+
+body {
+    font-size: 18px;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.responsive-logo {
+    width: 200px;
+}
+
+/* Menu desktop */
+.navbar {
+    display: flex;
+    flex-direction: row;
+}

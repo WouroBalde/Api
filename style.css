@@ -1,0 +1,18 @@
+:root {
+    --primary: #000000;  /* Noir */
+    --secondary: #FFFFFF; /* Blanc */
+    --accent: #008000;   /* Vert */
+}
+
+.aeerck-header {
+    background: linear-gradient(to right, var(--primary), #333333);
+    color: var(--secondary);
+    border-bottom: 3px solid var(--accent);
+}
+
+.logo-container {
+    background-color: var(--secondary);
+    padding: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}

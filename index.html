@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote en ligne</title>
+    <script>
+        async function sendCode() {
+            let email = document.getElementById("email").value;
+            let filiere = document.getElementById("filiere").value;
+            let niveau = document.getElementById("niveau").value;
+            let etablissement = document.getElementById("etablissement").value;
+
+            let response = await fetch("http://localhost:8000/send_code", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, filiere, niveau, etablissement })
+            });
+            let data = await response.json();
+            alert(data.message);
+        }
+
+        async function vote() {
+            let email = document.getElementById("vote_email").value;
+            let code = document.getElementById("code").value;
+            let candidate = document.getElementById("candidate").value;
+
+            let response = await fetch("http://localhost:8000/vote", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, code: parseInt(code), candidate })
+            });
+            let data = await response.json();
+            alert(data.message);
+        }
+    </script>
+</head>
+<body>
+    <h1>Plateforme de vote en ligne</h1>
+
+    <h2>Demander un code de vérification</h2>
+    <input type="email" id="email" placeholder="Votre email">
+    <input type="text" id="filiere" placeholder="Filière">
+    <input type="text" id="niveau" placeholder="Niveau">
+    <input type="text" id="etablissement" placeholder="Établissement">
+    <button onclick="sendCode()">Envoyer le code</button>
+
+    <h2>Voter</h2>
+    <input type="email" id="vote_email" placeholder="Votre email">
+    <input type="number" id="code" placeholder="Code reçu">
+    <input type="text" id="candidate" placeholder="Nom du candidat">
+    <button onclick="vote()">Voter</button>
+</body>
+</html>

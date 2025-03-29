@@ -1,0 +1,27 @@
+:root {
+    --primary: #0055B7;
+    --secondary: #FFFFFF;
+}
+
+body {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.responsive-logo {
+    width: 150px;
+    height: auto;
+}
+
+.container {
+    width: 100%;
+    padding: 15px;
+}
+
+/* Menu mobile */
+.navbar {
+    display: flex;
+    flex-direction: column;
+}

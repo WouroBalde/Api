@@ -1,15 +1,32 @@
-/aeerck-app
-├── main.py
-├── static/
-│   ├── css/
-│   │   └── style.css
-│   ├── js/
-│   │   └── animations.js
-│   └── images/
-│       ├── logo.png
-│       └── favicon.ico
-├── templates/
-│   ├── home.html
-│   └── components/
-│       └── navbar.html
-└── requirements.txt
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from .database import engine
+from .models import member, event, vote
+from .routes import auth, admin, members, events, voting
+from .config import AEERCK_CONFIG
+
+# Création des tables
+member.Base.metadata.create_all(bind=engine)
+event.Base.metadata.create_all(bind=engine)
+vote.Base.metadata.create_all(bind=engine)
+
+app = FastAPI(**AEERCK_CONFIG['fastapi_settings'])
+
+# Middleware CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=AEERCK_CONFIG['allowed_origins'],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Intégration des routes
+app.include_router(auth.router)
+app.include_router(admin.router)
+app.include_router(members.router)
+app.include_router(events.router)
+app.include_router(voting.router)
+
+# Configuration des fichiers statiques
+app.mount("/static", StaticFiles(directory="static"), name="static")

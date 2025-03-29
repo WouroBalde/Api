@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{config.ORG_ACRONYM}} - {{config.SLOGAN}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        :root {
+            --primary: {{config.PRIMARY_COLOR}};
+            --secondary: {{config.SECONDARY_COLOR}};
+            --accent: {{config.ACCENT_COLOR}};
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: var(--secondary);
+            color: var(--primary);
+        }
+        .header {
+            background: var(--primary);
+            color: var(--secondary);
+            padding: 1rem;
+            text-align: center;
+        }
+        .logo {
+            height: 100px;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="{{config.LOGO_BASE64}}" alt="Logo {{config.ORG_ACRONYM}}" class="logo">
+        <h1>{{config.ORG_NAME}}</h1>
+        <p><em>{{config.SLOGAN}}</em></p>
+    </div>
+</body>
+</html>
