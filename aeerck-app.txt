@@ -1,0 +1,15 @@
+/aeerck-app
+├── main.py
+├── static/
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   └── animations.js
+│   └── images/
+│       ├── logo.png
+│       └── favicon.ico
+├── templates/
+│   ├── home.html
+│   └── components/
+│       └── navbar.html
+└── requirements.txt
